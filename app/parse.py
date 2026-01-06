@@ -52,7 +52,3 @@ def main(output_csv_path: str) -> None:
         writer = csv.writer(file)
         writer.writerow(QUOTE_FIELDS)
         writer.writerows(astuple(quote) for quote in get_quotes())
-
-
-if __name__ == "__main__":
-    main("quotes.csv")
