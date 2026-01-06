@@ -1,4 +1,5 @@
 import csv
+import time
 from dataclasses import dataclass, fields, astuple
 import requests
 from bs4 import BeautifulSoup, Tag
@@ -33,6 +34,7 @@ def get_quotes() -> list[Quote]:
     all_quotes = []
     page = 1
     while True:
+        time.sleep(1)
         content = requests.get(f"{BASE_URL}/page/{page}/").content
         soup = BeautifulSoup(content, "html.parser")
         all_quotes.extend(get_single_page_quote(soup))
